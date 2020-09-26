@@ -1,3 +1,5 @@
+import sys
+
 class LetraDni:
     digits = 0
     mod_to_letter = {
@@ -30,3 +32,7 @@ class LetraDni:
     def calculate(self):
         mod = self.digits % len(self.mod_to_letter)
         return self.mod_to_letter[str(mod)]
+
+if __name__ == '__main__':
+    myDni = LetraDni(sys.argv[1])
+    print(myDni.calculate())
