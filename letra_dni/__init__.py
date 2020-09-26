@@ -28,5 +28,5 @@ class LetraDni:
     def __init__(self, digits):
         self.digits = int(digits)
     def calculate(self):
-        mod = self.digits % 23
+        mod = self.digits % len(self.mod_to_letter)
         return self.mod_to_letter[str(mod)]
