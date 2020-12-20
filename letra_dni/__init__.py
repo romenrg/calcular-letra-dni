@@ -3,7 +3,7 @@ import logging.config
 import pathlib
 from os import path
 
-logger = logging.getLogger('calcularLetraDNI')
+logger = logging.getLogger('letraDni')
 
 class LetraDni:
     digits = 0
