@@ -3,6 +3,8 @@ import logging.config
 import pathlib
 from os import path
 
+logger = logging.getLogger('calcularLetraDNILogger')
+
 class LetraDni:
     digits = 0
     mod_to_letter = {
@@ -32,13 +34,12 @@ class LetraDni:
     }
     def __init__(self, digits):
         self.digits = int(digits)
-        logging.config.fileConfig(str(path.dirname(path.realpath(__file__))) + '/logging.conf')
-        self.logger = logging.getLogger('calcularLetraDNILogger')
     def calculate(self):
         mod = self.digits % len(self.mod_to_letter)
-        self.logger.debug('Mod is: '+ str(mod))
+        logger.debug('Mod is: '+ str(mod))
         return self.mod_to_letter[str(mod)]
 
 if __name__ == '__main__':
+    logging.config.fileConfig(str(path.dirname(path.realpath(__file__))) + '/logging.conf')
     myDni = LetraDni(sys.argv[1])
     print(myDni.calculate())
