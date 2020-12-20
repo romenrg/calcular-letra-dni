@@ -1,4 +1,5 @@
 import sys
+import logging.config
 
 class LetraDni:
     digits = 0
@@ -31,8 +32,11 @@ class LetraDni:
         self.digits = int(digits)
     def calculate(self):
         mod = self.digits % len(self.mod_to_letter)
+        logger.debug('Mod is: '+ str(mod))
         return self.mod_to_letter[str(mod)]
 
 if __name__ == '__main__':
+    logging.config.fileConfig('letra_dni/logging.conf')
+    logger = logging.getLogger('calcularLetraDNILogger')
     myDni = LetraDni(sys.argv[1])
     print(myDni.calculate())
